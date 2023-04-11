@@ -1,0 +1,316 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+
+/* ============================================================================ 
+Variables
+===============================================================================*/
+
+:root {
+  /*Color: Primario*/
+  --color-primaryD-1: darkblue;
+  --color-primary-2: blue;
+  --color-primaryL-3: lightblue;
+
+  /* Color: Grises */
+  --color-greyD-1: darkgrey;
+  --color-grey-2: grey;
+  --color-greyL-3: lightgrey;
+
+  /*Color: Secundario*/
+  --color-white: #fff;
+  --color-black: #222;
+  --color-red-dark: hsl(360, 67%, 44%);
+  --color-red: red;
+  --color-green-dark: darkgreen;
+  --color-green-: hsl(125, 71%, 66%);
+  
+  /*Fuentes:*/
+  --font-primary: "Roboto", sans-serif;
+  --font-secondary: "Open Sans", sans-serif;
+
+  /*Otros:*/
+  --transition: all 0.3s linear;
+  --spacing: 0.1rem;
+  --radius: 0.5rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --max-width: 1170px;
+  --fixed-width: 620px;
+}
+/* ============================================================================ 
+Estilos Globales
+===============================================================================*/
+
+*, ::after, ::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--font-secondary);
+  background: var(--color-white);
+  color: var(--color-primaryD-1);
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+img:not(.logo) {
+  width: 100%;
+}
+img {
+  display: block;
+}
+h1, h2, h3, h4 {
+  letter-spacing: var(--spacing);
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-primary);
+}
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.25rem;
+}
+h4 {
+  font-size: 0.875rem;
+}
+p {
+  margin-bottom: 1.25rem;
+  color: var(--color-primaryD-1);
+}
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1, h2, h3, h4 {
+    line-height: 1;
+  }
+}
+
+/* ============================================================================ 
+Sidebar
+============================================================================ */
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+.sidebar-toggle{
+  position: fixed;
+  top: auto;
+  right: 3rem;
+  font-size: 1.5rem;
+  background: transparent;
+  border-color: transparent;
+  color: var(--color-primaryD-1);
+  transition: all 0.5s linear;
+  cursor: pointer;
+  animation: bounce 1.5s ease-in-out infinite;  
+}
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.sidebar-toggle:hover {
+  color: var(--color-primary-2);
+}
+.nav-title {
+  color: darkblue;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  letter-spacing: 0.1rem;
+  margin: 0 auto;
+  margin-left: 15px;
+  transition: var(--transition);
+}
+.close-btn-side {
+  font-size: 1.75rem;
+  background: transparent;
+  border-color: transparent;
+  color: var(--color-primaryD-1);
+  transition: var(--transition);
+  cursor: pointer;
+}
+.close-btn-side:hover {
+  color: var(--color-primary-2);
+  transform: rotate(180deg);
+}
+.logo {
+  justify-self: center;
+  height: 35px;
+}
+.sidebar {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  row-gap: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  box-shadow: var(--color-primaryD-1);
+  transition: var(--transition);
+  transform: translate(-100%); 
+}
+.show-sidebar {
+  transform: translate(0);
+}
+@media screen and (min-width: 676px) {
+  .sidebar {
+    width: 400px;
+  }
+}
+.links a {
+  color: var(--color-primaryD-1);
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  display: block;
+  padding: 1rem 1.5rem;
+  transition: var(--transition);
+}
+.links a:hover {
+  color:var(--color-white);
+  padding-left: 1.5rem;
+  background-color: var(--color-primaryD-1);
+}
+.social-icons {
+  justify-self: center;
+  display: flex;
+  padding-bottom: 2rem;
+}
+.social-icons a {
+  font-size: 1.5rem;
+  margin: 0 1rem;
+  color: var(--color-primaryD-1);
+  transition: var(--transition);
+}
+.social-icons a:hover {
+  color: var(--color-primary-2);
+}
+
+/* ============================================================================ 
+Modal
+============================================================================ */
+.hero {
+  min-height: 90vh;
+  background: url("./fondo.jpg") center/cover no-repeat;
+  display: grid;
+  place-items: center;
+}
+.banner {
+  background: rgba(255, 255, 255, 0.384);
+  padding: 4rem 0;
+  border-radius: var(--radius);
+  box-shadow: var(--light-shadow);
+  text-align: center;
+  width: 90vw;
+  max-width: var(--fixed-width);
+}
+.modal-btn {
+  margin-top: 2rem;
+  background: var(--color-white);
+  border-color: var(--color-primaryD-1);
+  color: var(--color-primaryD-1); 
+  padding: 10px;
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+.modal-btn:hover {
+  background: var(--color-primaryD-1);
+  color: var(--color-white);
+}
+.modal-overlay {
+  display: grid;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-primaryL-3);
+  place-items: center;
+  transition: var(--transition);
+  visibility: hidden; 
+  z-index: -10;
+}
+.open-modal {
+  visibility: visible;
+  z-index: 10;
+}
+.modal-container {
+  position: relative;
+  background: var(--color-white);
+  border-radius: var(--radius);
+  width: 90vw;
+  height: 30vh;
+  max-width: var(--fixed-width);
+  text-align: center;
+  display: grid;
+  place-items: center;
+}
+.close-btn-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  background: transparent;
+  border-color: transparent;
+  color: var(--color-primaryD-1);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.close-btn-modal:hover {
+  color: var(--color-red-dark);
+  transform: scale(1.5);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
